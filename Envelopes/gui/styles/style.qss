@@ -1,0 +1,238 @@
+QMainWindow {
+    background-color: #F4F6F8;
+}
+
+QWidget#centralWidget {
+    background-color: #F4F6F8;
+}
+
+QWidget#sidebar {
+    background-color: #172033;
+}
+
+QLabel#applicationTitle {
+    color: #FFFFFF;
+    font-family: "Segoe UI";
+    font-size: 24px;
+    font-weight: 700;
+}
+
+QLabel#applicationSubtitle {
+    color: #AEB8C8;
+    font-family: "Segoe UI";
+    font-size: 12px;
+}
+
+QPushButton#navigationButton {
+    background-color: transparent;
+    color: #D8DFEA;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+    text-align: left;
+    font-family: "Segoe UI";
+    font-size: 14px;
+}
+
+QPushButton#navigationButton:hover {
+    background-color: #243149;
+    color: #FFFFFF;
+}
+
+QPushButton#navigationButton:checked {
+    background-color: #2F80ED;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+QPushButton#navigationButton:pressed {
+    background-color: #256FD1;
+}
+
+QLabel#versionLabel {
+    color: #7F8A9B;
+    font-family: "Segoe UI";
+    font-size: 11px;
+}
+
+QWidget#page {
+    background-color: #F4F6F8;
+}
+
+QLabel#pageTitle {
+    color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 28px;
+    font-weight: 700;
+}
+
+QLabel#pageDescription {
+    color: #6B7280;
+    font-family: "Segoe UI";
+    font-size: 14px;
+}
+
+QLabel#placeholderMessage {
+    background-color: #FFFFFF;
+    color: #6B7280;
+    border: 1px solid #DDE2E7;
+    border-radius: 10px;
+    padding: 24px;
+    font-family: "Segoe UI";
+    font-size: 14px;
+}
+
+QStatusBar#statusBar {
+    background-color: #FFFFFF;
+    color: #6B7280;
+    border-top: 1px solid #DDE2E7;
+    font-family: "Segoe UI";
+    font-size: 12px;
+}
+
+QStatusBar#statusBar::item {
+    border: none;
+}
+
+QToolTip {
+    background-color: #172033;
+    color: #FFFFFF;
+    border: 1px solid #243149;
+    padding: 6px;
+}
+
+QPushButton#primaryButton {
+    background-color: #2F80ED;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 7px;
+    padding: 11px 18px;
+    font-family: "Segoe UI";
+    font-size: 14px;
+    font-weight: 600;
+}
+
+QPushButton#primaryButton:hover {
+    background-color: #256FD1;
+}
+
+QPushButton#primaryButton:pressed {
+    background-color: #1E5FB3;
+}
+
+QScrollArea#accountScrollArea {
+    background-color: transparent;
+    border: none;
+}
+
+QScrollArea#accountScrollArea > QWidget > QWidget {
+    background-color: transparent;
+}
+
+QFrame#accountCard {
+    background-color: #FFFFFF;
+    border: 1px solid #DDE2E7;
+    border-radius: 10px;
+}
+
+QFrame#accountCard:hover {
+    border: 1px solid #BFC8D4;
+}
+
+QLabel#accountCardName {
+    color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 17px;
+    font-weight: 600;
+}
+
+QLabel#accountCardCaption {
+    color: #6B7280;
+    font-family: "Segoe UI";
+    font-size: 12px;
+}
+
+QLabel#accountCardBalance {
+    color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 25px;
+    font-weight: 700;
+}
+
+QPushButton#dangerTextButton {
+    background-color: transparent;
+    color: #D64545;
+    border: none;
+    padding: 6px;
+    font-family: "Segoe UI";
+    font-size: 12px;
+    font-weight: 600;
+}
+
+QPushButton#dangerTextButton:hover {
+    color: #B83232;
+    text-decoration: underline;
+}
+
+QFrame#emptyState {
+    background-color: #FFFFFF;
+    border: 1px dashed #C8D0DA;
+    border-radius: 10px;
+}
+
+QLabel#emptyStateTitle {
+    color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 19px;
+    font-weight: 600;
+}
+
+QLabel#emptyStateDescription {
+    color: #6B7280;
+    font-family: "Segoe UI";
+    font-size: 14px;
+}
+
+QDialog {
+    background-color: #FFFFFF;
+}
+
+QDialog QLabel {
+    color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 13px;
+}
+
+QLineEdit,
+QDoubleSpinBox {
+    background-color: #FFFFFF;
+    color: #1F2937;
+    border: 1px solid #CBD2DA;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: "Segoe UI";
+    font-size: 14px;
+}
+
+QLineEdit:focus,
+QDoubleSpinBox:focus {
+    border: 1px solid #2F80ED;
+}
+
+QLabel#dialogError {
+    color: #D64545;
+    font-family: "Segoe UI";
+    font-size: 12px;
+}
+
+QDialogButtonBox QPushButton {
+    min-width: 90px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-family: "Segoe UI";
+    font-size: 13px;
+}
+
+QDialogButtonBox QPushButton:hover {
+    background-color: #E9EEF5;
+}

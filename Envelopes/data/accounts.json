@@ -1,0 +1,17 @@
+[
+    {
+        "account_id": "40a19fd0-c3a0-40dd-bd2c-8f48bc6da540",
+        "name": "rapidPay",
+        "opening_balance_cents": 0
+    },
+    {
+        "account_id": "12b24123-9906-4666-819a-71d1e2aa210c",
+        "name": "FoodStamps",
+        "opening_balance_cents": 0
+    },
+    {
+        "account_id": "4b33e92d-152a-4b3c-a9e5-4a390dad6a7f",
+        "name": "Cash",
+        "opening_balance_cents": 3500
+    }
+]
