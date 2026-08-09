@@ -51,6 +51,65 @@ class JsonAccountRepository:
 
         return accounts
 
+    def get_by_id(
+        self,
+        account_id: str,
+    ) -> Account | None:
+        """Return an account by ID, or None when it does not exist."""
+
+        accounts = self.get_all()
+
+        for account in accounts:
+            if account.account_id == account_id:
+                return account
+
+        return None
+
+    def add(self, account: Account) -> None:
+        """Add an account to storage."""
+
+        accounts = self.get_all()
+        accounts.append(account)
+
+        self.save_all(accounts)
+
+    def update(self, updated_account: Account) -> None:
+        """Replace an existing stored account."""
+
+        accounts = self.get_all()
+        account_found = False
+
+        for index, account in enumerate(accounts):
+            if account.account_id == updated_account.account_id:
+                accounts[index] = updated_account
+                account_found = True
+                break
+
+        if not account_found:
+            raise ValueError(
+                "The account being updated could not be found."
+            )
+
+        self.save_all(accounts)
+
+    def delete(self, account_id: str) -> None:
+        """Delete an account from storage."""
+
+        accounts = self.get_all()
+
+        updated_accounts = [
+            account
+            for account in accounts
+            if account.account_id != account_id
+        ]
+
+        if len(updated_accounts) == len(accounts):
+            raise ValueError(
+                "The account being deleted could not be found."
+            )
+
+        self.save_all(updated_accounts)
+
     def save_all(self, accounts: list[Account]) -> None:
         """Replace the stored account collection."""
 
@@ -73,12 +132,7 @@ class JsonAccountRepository:
             ) from error
 
     def migrate_legacy_balances(self) -> None:
-        """
-        Rewrite older account records using integer cents.
-
-        Records containing `opening_balance` are loaded by the
-        Account model and saved back as `opening_balance_cents`.
-        """
+        """Rewrite older account records using integer cents."""
 
         accounts = self.get_all()
         self.save_all(accounts)

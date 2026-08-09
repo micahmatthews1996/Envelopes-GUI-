@@ -59,6 +59,10 @@ QWidget#page {
     background-color: #F4F6F8;
 }
 
+QWidget#pageHeader {
+    background-color: transparent;
+}
+
 QLabel#pageTitle {
     color: #1F2937;
     font-family: "Segoe UI";
@@ -82,31 +86,13 @@ QLabel#placeholderMessage {
     font-size: 14px;
 }
 
-QStatusBar#statusBar {
-    background-color: #FFFFFF;
-    color: #6B7280;
-    border-top: 1px solid #DDE2E7;
-    font-family: "Segoe UI";
-    font-size: 12px;
-}
-
-QStatusBar#statusBar::item {
-    border: none;
-}
-
-QToolTip {
-    background-color: #172033;
-    color: #FFFFFF;
-    border: 1px solid #243149;
-    padding: 6px;
-}
-
 QPushButton#primaryButton {
     background-color: #2F80ED;
     color: #FFFFFF;
     border: none;
     border-radius: 7px;
-    padding: 11px 18px;
+    min-height: 22px;
+    padding: 10px 18px;
     font-family: "Segoe UI";
     font-size: 14px;
     font-weight: 600;
@@ -120,6 +106,56 @@ QPushButton#primaryButton:pressed {
     background-color: #1E5FB3;
 }
 
+QPushButton#primaryButton:disabled {
+    background-color: #AFCBF0;
+    color: #F8FAFC;
+}
+
+QPushButton#secondaryButton {
+    background-color: #FFFFFF;
+    color: #374151;
+    border: 1px solid #CBD2DA;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-family: "Segoe UI";
+    font-size: 13px;
+    font-weight: 600;
+}
+
+QPushButton#secondaryButton:hover {
+    background-color: #F3F6FA;
+    border-color: #AEB8C5;
+}
+
+QPushButton#secondaryButton:pressed {
+    background-color: #E8EDF3;
+}
+
+QPushButton#secondaryButton:disabled {
+    background-color: #F5F6F8;
+    color: #A0A8B4;
+    border-color: #E0E4E9;
+}
+
+QPushButton#dangerTextButton {
+    background-color: transparent;
+    color: #D64545;
+    border: none;
+    padding: 6px;
+    font-family: "Segoe UI";
+    font-size: 12px;
+    font-weight: 600;
+}
+
+QPushButton#dangerTextButton:hover {
+    color: #B83232;
+    text-decoration: underline;
+}
+
+QPushButton#dangerTextButton:pressed {
+    color: #962A2A;
+}
+
 QScrollArea#accountScrollArea {
     background-color: transparent;
     border: none;
@@ -127,6 +163,85 @@ QScrollArea#accountScrollArea {
 
 QScrollArea#accountScrollArea > QWidget > QWidget {
     background-color: transparent;
+}
+
+QScrollArea#categoryPanelScrollArea {
+    background-color: transparent;
+    border: none;
+}
+
+QScrollArea#categoryPanelScrollArea > QWidget > QWidget {
+    background-color: transparent;
+}
+
+QScrollBar:vertical {
+    background-color: transparent;
+    width: 10px;
+    margin: 2px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #C7CFD9;
+    border-radius: 4px;
+    min-height: 30px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #AEB8C5;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background-color: transparent;
+}
+
+QScrollBar:horizontal {
+    background-color: transparent;
+    height: 10px;
+    margin: 2px;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #C7CFD9;
+    border-radius: 4px;
+    min-width: 30px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: #AEB8C5;
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0;
+}
+
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal {
+    background-color: transparent;
+}
+
+QFrame#card,
+QFrame#sectionCard,
+QFrame#metricCard,
+QFrame#progressCard,
+QFrame#listCard {
+    background-color: #FFFFFF;
+    border: 1px solid #DDE2E7;
+    border-radius: 12px;
+}
+
+QFrame#card:hover,
+QFrame#sectionCard:hover,
+QFrame#metricCard:hover,
+QFrame#progressCard:hover,
+QFrame#listCard:hover {
+    border-color: #C7CFD9;
 }
 
 QFrame#accountCard {
@@ -159,22 +274,15 @@ QLabel#accountCardBalance {
     font-weight: 700;
 }
 
-QPushButton#dangerTextButton {
-    background-color: transparent;
-    color: #D64545;
-    border: none;
-    padding: 6px;
+QLabel#accountOpeningBalance {
+    color: #4B5563;
     font-family: "Segoe UI";
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 600;
 }
 
-QPushButton#dangerTextButton:hover {
-    color: #B83232;
-    text-decoration: underline;
-}
-
-QFrame#emptyState {
+QFrame#emptyState,
+QFrame#categoryEmptyState {
     background-color: #FFFFFF;
     border: 1px dashed #C8D0DA;
     border-radius: 10px;
@@ -193,6 +301,384 @@ QLabel#emptyStateDescription {
     font-size: 14px;
 }
 
+QFrame#expenseCategoryPanel,
+QFrame#incomeCategoryPanel {
+    background-color: #FFFFFF;
+    border: 1px solid #DDE2E7;
+    border-radius: 12px;
+}
+
+QFrame#expenseCategoryPanel:hover,
+QFrame#incomeCategoryPanel:hover {
+    border-color: #C7CFD9;
+}
+
+QLabel#categoryPanelTitle {
+    color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 16px;
+    font-weight: 700;
+}
+
+QLabel#categoryCountBadge {
+    background-color: #E8EDF3;
+    color: #667085;
+    border: none;
+    border-radius: 10px;
+    min-width: 20px;
+    min-height: 20px;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-family: "Segoe UI";
+    font-size: 10px;
+    font-weight: 700;
+}
+
+QFrame#categoryRow {
+    background-color: transparent;
+    border: none;
+}
+
+QFrame#categoryRow:hover {
+    background-color: #F7F9FC;
+}
+
+QLabel#categoryRowName {
+    color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 14px;
+    font-weight: 600;
+}
+
+QFrame#categoryRowDivider {
+    background-color: #E8ECF1;
+    border: none;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+QPushButton#categoryEditButton {
+    background-color: transparent;
+    color: #2F80ED;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 9px;
+    font-family: "Segoe UI";
+    font-size: 12px;
+    font-weight: 600;
+}
+
+QPushButton#categoryEditButton:hover {
+    background-color: #EAF2FD;
+    color: #256FD1;
+}
+
+QPushButton#categoryEditButton:pressed {
+    background-color: #DCEAFB;
+}
+
+QPushButton#categoryArchiveButton {
+    background-color: transparent;
+    color: #7B8491;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 9px;
+    font-family: "Segoe UI";
+    font-size: 12px;
+    font-weight: 600;
+}
+
+QPushButton#categoryArchiveButton:hover {
+    background-color: #F1F3F6;
+    color: #4B5563;
+}
+
+QPushButton#categoryArchiveButton:pressed {
+    background-color: #E6E9ED;
+}
+
+QFrame#categoryPanelEmptyState {
+    background-color: #FAFBFC;
+    border: 1px dashed #D1D7DF;
+    border-radius: 9px;
+    margin: 8px;
+}
+
+QLabel#categoryPanelEmptyTitle {
+    color: #374151;
+    font-family: "Segoe UI";
+    font-size: 15px;
+    font-weight: 600;
+}
+
+QLabel#categoryPanelEmptyDescription {
+    color: #7B8491;
+    font-family: "Segoe UI";
+    font-size: 13px;
+}
+
+QTableWidget#transactionTable {
+    background-color: #FFFFFF;
+    alternate-background-color: #FAFBFC;
+    color: #1F2937;
+    border: 1px solid #DDE2E7;
+    border-radius: 10px;
+    gridline-color: transparent;
+    selection-background-color: #EAF2FD;
+    selection-color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 13px;
+    outline: none;
+}
+
+QTableWidget#transactionTable::item {
+    border: none;
+    border-bottom: 1px solid #EDF0F3;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+QTableWidget#transactionTable::item:hover {
+    background-color: #F3F7FC;
+}
+
+QTableWidget#transactionTable::item:selected {
+    background-color: #EAF2FD;
+    color: #1F2937;
+}
+
+QTableWidget#transactionTable::item:selected:active {
+    background-color: #DDEBFC;
+    color: #1F2937;
+}
+
+QTableWidget#transactionTable QTableCornerButton::section {
+    background-color: #F7F9FC;
+    border: none;
+    border-bottom: 1px solid #DDE2E7;
+}
+
+QTableWidget#transactionTable QHeaderView::section {
+    background-color: #F7F9FC;
+    color: #667085;
+    border: none;
+    border-bottom: 1px solid #DDE2E7;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: "Segoe UI";
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+}
+
+QTableWidget#transactionTable QHeaderView::section:hover {
+    background-color: #F0F3F7;
+}
+
+QTableWidget#transactionTable QHeaderView::section:first {
+    border-top-left-radius: 9px;
+}
+
+QTableWidget#transactionTable QHeaderView::section:last {
+    border-top-right-radius: 9px;
+}
+
+QTableWidget#transactionTable QAbstractItemView {
+    background-color: #FFFFFF;
+}
+
+QLabel#sectionCardTitle {
+    color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 17px;
+    font-weight: 700;
+}
+
+QLabel#sectionCardSubtitle {
+    color: #6B7280;
+    font-family: "Segoe UI";
+    font-size: 12px;
+}
+
+QWidget#sectionCardSeparator {
+    background-color: #E8ECF1;
+    border: none;
+}
+
+QLabel#metricCardLabel {
+    color: #6B7280;
+    font-family: "Segoe UI";
+    font-size: 13px;
+    font-weight: 600;
+}
+
+QLabel#metricCardValue {
+    color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 28px;
+    font-weight: 700;
+}
+
+QLabel#metricCardSupportingText {
+    color: #6B7280;
+    font-family: "Segoe UI";
+    font-size: 12px;
+}
+
+QLabel#progressCardTitle {
+    color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 16px;
+    font-weight: 700;
+}
+
+QLabel#progressCardValue {
+    color: #374151;
+    font-family: "Segoe UI";
+    font-size: 14px;
+    font-weight: 600;
+}
+
+QLabel#progressCardPercent {
+    color: #2F80ED;
+    font-family: "Segoe UI";
+    font-size: 13px;
+    font-weight: 700;
+}
+
+QLabel#progressCardSupportingText {
+    color: #6B7280;
+    font-family: "Segoe UI";
+    font-size: 12px;
+}
+
+QProgressBar#goalProgressBar {
+    background-color: #E7ECF2;
+    border: none;
+    border-radius: 5px;
+}
+
+QProgressBar#goalProgressBar::chunk {
+    background-color: #2F80ED;
+    border-radius: 5px;
+}
+
+QFrame#progressCard[completed="true"] {
+    background-color: #F1FAF5;
+    border-color: #B7DFC7;
+}
+
+QFrame#progressCard[completed="true"] QLabel#progressCardTitle {
+    color: #237A45;
+}
+
+QFrame#progressCard[completed="true"] QLabel#progressCardPercent {
+    color: #237A45;
+}
+
+QFrame#progressCard[completed="true"] QProgressBar#goalProgressBar::chunk {
+    background-color: #27AE60;
+}
+
+QWidget#emptyStateWidget {
+    background-color: #FAFBFC;
+    border: 1px dashed #D1D7DF;
+    border-radius: 10px;
+}
+
+QLabel#emptyStateWidgetTitle {
+    color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 17px;
+    font-weight: 700;
+}
+
+QLabel#emptyStateWidgetDescription {
+    color: #6B7280;
+    font-family: "Segoe UI";
+    font-size: 13px;
+}
+
+QPushButton#listCardActionButton {
+    background-color: transparent;
+    color: #2F80ED;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 8px;
+    font-family: "Segoe UI";
+    font-size: 12px;
+    font-weight: 600;
+}
+
+QPushButton#listCardActionButton:hover {
+    background-color: #EAF2FD;
+    color: #256FD1;
+}
+
+QPushButton#listCardActionButton:pressed {
+    background-color: #DCEAFB;
+}
+
+QFrame#listCardRow {
+    background-color: transparent;
+    border: none;
+    border-radius: 7px;
+}
+
+QFrame#listCardRow:hover {
+    background-color: #F7F9FC;
+}
+
+QLabel#listCardPrimaryText {
+    color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 14px;
+    font-weight: 600;
+}
+
+QLabel#listCardSecondaryText {
+    color: #7B8491;
+    font-family: "Segoe UI";
+    font-size: 12px;
+}
+
+QLabel#listCardTrailingText {
+    color: #374151;
+    font-family: "Segoe UI";
+    font-size: 13px;
+    font-weight: 700;
+}
+
+QWidget#listCardRowSeparator {
+    background-color: #E8ECF1;
+    border: none;
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
+QWidget#listCardEmptyState {
+    background-color: #FAFBFC;
+    border: 1px dashed #D1D7DF;
+    border-radius: 9px;
+}
+
+QLabel#listCardEmptyTitle {
+    color: #374151;
+    font-family: "Segoe UI";
+    font-size: 15px;
+    font-weight: 700;
+}
+
+QLabel#listCardEmptyDescription {
+    color: #7B8491;
+    font-family: "Segoe UI";
+    font-size: 12px;
+}
+
 QDialog {
     background-color: #FFFFFF;
 }
@@ -204,7 +690,10 @@ QDialog QLabel {
 }
 
 QLineEdit,
-QDoubleSpinBox {
+QDoubleSpinBox,
+QComboBox,
+QDateEdit,
+QPlainTextEdit {
     background-color: #FFFFFF;
     color: #1F2937;
     border: 1px solid #CBD2DA;
@@ -212,11 +701,54 @@ QDoubleSpinBox {
     padding: 8px;
     font-family: "Segoe UI";
     font-size: 14px;
+    min-height: 20px;
 }
 
 QLineEdit:focus,
-QDoubleSpinBox:focus {
+QDoubleSpinBox:focus,
+QComboBox:focus,
+QDateEdit:focus,
+QPlainTextEdit:focus {
     border: 1px solid #2F80ED;
+}
+
+QComboBox::drop-down,
+QDateEdit::drop-down {
+    border: none;
+    width: 28px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #FFFFFF;
+    color: #1F2937;
+    border: 1px solid #CBD2DA;
+    selection-background-color: #EAF2FD;
+    selection-color: #1F2937;
+    padding: 4px;
+}
+
+QCheckBox {
+    color: #374151;
+    spacing: 8px;
+    font-family: "Segoe UI";
+    font-size: 13px;
+}
+
+QCheckBox::indicator {
+    width: 17px;
+    height: 17px;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: #FFFFFF;
+    border: 1px solid #AEB8C5;
+    border-radius: 4px;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #2F80ED;
+    border: 1px solid #2F80ED;
+    border-radius: 4px;
 }
 
 QLabel#dialogError {
@@ -225,14 +757,304 @@ QLabel#dialogError {
     font-size: 12px;
 }
 
+QLabel#categoryColorValue {
+    color: #667085;
+    font-family: "Segoe UI";
+    font-size: 12px;
+}
+
 QDialogButtonBox QPushButton {
     min-width: 90px;
     padding: 8px 14px;
+    border: 1px solid #CBD2DA;
     border-radius: 6px;
+    background-color: #FFFFFF;
+    color: #374151;
     font-family: "Segoe UI";
     font-size: 13px;
+    font-weight: 600;
 }
 
 QDialogButtonBox QPushButton:hover {
-    background-color: #E9EEF5;
+    background-color: #F3F6FA;
+}
+
+QDialogButtonBox QPushButton:pressed {
+    background-color: #E8EDF3;
+}
+
+QStatusBar#statusBar {
+    background-color: #FFFFFF;
+    color: #6B7280;
+    border-top: 1px solid #DDE2E7;
+    font-family: "Segoe UI";
+    font-size: 12px;
+}
+
+QStatusBar#statusBar::item {
+    border: none;
+}
+
+QToolTip {
+    background-color: #172033;
+    color: #FFFFFF;
+    border: 1px solid #243149;
+    padding: 6px;
+}
+
+QFrame#featuredMetricCard {
+    background-color: #FFFFFF;
+    border: 1px solid #C7D9F2;
+    border-radius: 14px;
+}
+
+QFrame#featuredMetricCard:hover {
+    border-color: #9DBDE8;
+}
+
+QFrame#featuredMetricCard QLabel#metricCardLabel {
+    color: #4B6280;
+    font-size: 14px;
+}
+
+QFrame#featuredMetricCard QLabel#metricCardValue {
+    color: #172033;
+    font-size: 38px;
+    font-weight: 700;
+}
+
+QFrame#featuredMetricCard QLabel#metricCardSupportingText {
+    color: #6B7280;
+    font-size: 13px;
+}
+
+QFrame#dashboardSection {
+    background-color: #FFFFFF;
+    border: 1px solid #DDE2E7;
+    border-radius: 12px;
+}
+
+QFrame#dashboardSection:hover {
+    border-color: #C7CFD9;
+}
+
+QLabel#dashboardSectionTitle {
+    color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 17px;
+    font-weight: 700;
+}
+
+QLabel#dashboardSectionSubtitle {
+    color: #6B7280;
+    font-family: "Segoe UI";
+    font-size: 12px;
+}
+
+QWidget#dashboardSectionSeparator {
+    background-color: #E8ECF1;
+    border: none;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+QPushButton#dashboardSectionActionButton {
+    background-color: transparent;
+    color: #2F80ED;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 8px;
+    font-family: "Segoe UI";
+    font-size: 12px;
+    font-weight: 600;
+}
+
+QPushButton#dashboardSectionActionButton:hover {
+    background-color: #EAF2FD;
+    color: #256FD1;
+}
+
+QPushButton#dashboardSectionActionButton:pressed {
+    background-color: #DCEAFB;
+}
+/* =========================================================
+   Budgets
+   ========================================================= */
+
+QScrollArea#budgetsScrollArea,
+QScrollArea#reportsScrollArea {
+    background-color: transparent;
+    border: none;
+}
+
+QScrollArea#budgetsScrollArea > QWidget > QWidget,
+QScrollArea#reportsScrollArea > QWidget > QWidget,
+QWidget#budgetsContent,
+QWidget#reportsContent,
+QWidget#budgetsContainer {
+    background-color: transparent;
+}
+
+QFrame#budgetCard {
+    background-color: #FFFFFF;
+    border: 1px solid #DDE2E7;
+    border-radius: 12px;
+}
+
+QFrame#budgetCard:hover {
+    border-color: #C7CFD9;
+}
+
+QFrame#budgetCard[overspent="true"] {
+    background-color: #FFF8F7;
+    border-color: #F0C2BE;
+}
+
+QFrame#budgetCard[overspent="true"] QLabel#progressCardPercent {
+    color: #D64545;
+}
+
+QProgressBar#budgetProgressBar {
+    background-color: #E7ECF2;
+    border: none;
+    border-radius: 5px;
+}
+
+QProgressBar#budgetProgressBar::chunk {
+    background-color: #2F80ED;
+    border: none;
+    border-radius: 5px;
+}
+
+QFrame#budgetCard[overspent="true"]
+QProgressBar#budgetProgressBar::chunk {
+    background-color: #D64545;
+}
+
+QLabel#budgetOverspentText {
+    color: #D64545;
+    font-family: "Segoe UI";
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   Reports
+   ========================================================= */
+
+QFrame#reportSectionCard {
+    background-color: #FFFFFF;
+    border: 1px solid #DDE2E7;
+    border-radius: 12px;
+}
+
+QFrame#reportSectionCard:hover {
+    border-color: #C7CFD9;
+}
+
+QWidget#reportsContent QComboBox {
+    background-color: #FFFFFF;
+    color: #1F2937;
+    border: 1px solid #CBD2DA;
+    border-radius: 7px;
+    padding: 8px 32px 8px 10px;
+    font-family: "Segoe UI";
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 22px;
+}
+
+QWidget#reportsContent QComboBox:hover {
+    border-color: #AEB8C5;
+    background-color: #FAFBFC;
+}
+
+QWidget#reportsContent QComboBox:focus {
+    border-color: #2F80ED;
+}
+
+QWidget#reportsContent QComboBox::drop-down {
+    border: none;
+    width: 30px;
+}
+
+QWidget#reportsContent QComboBox QAbstractItemView {
+    background-color: #FFFFFF;
+    color: #1F2937;
+    border: 1px solid #CBD2DA;
+    border-radius: 6px;
+    selection-background-color: #EAF2FD;
+    selection-color: #1F2937;
+    padding: 5px;
+    outline: none;
+}
+
+QWidget#reportsContent QFrame#metricCard {
+    background-color: #FFFFFF;
+    border: 1px solid #DDE2E7;
+    border-radius: 12px;
+}
+
+QWidget#reportsContent QFrame#metricCard:hover {
+    border-color: #C7CFD9;
+}
+
+QWidget#reportsContent QLabel#metricCardLabel {
+    color: #6B7280;
+    font-family: "Segoe UI";
+    font-size: 13px;
+    font-weight: 600;
+}
+
+QWidget#reportsContent QLabel#metricCardValue {
+    color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 27px;
+    font-weight: 700;
+}
+
+QWidget#reportsContent QLabel#sectionCardTitle {
+    color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 18px;
+    font-weight: 700;
+}
+
+QWidget#reportsContent QLabel#sectionCardSubtitle {
+    color: #6B7280;
+    font-family: "Segoe UI";
+    font-size: 12px;
+}
+
+QWidget#reportsContent QLabel#listCardPrimaryText {
+    color: #1F2937;
+    font-family: "Segoe UI";
+    font-size: 14px;
+    font-weight: 600;
+}
+
+QWidget#reportsContent QLabel#listCardSecondaryText {
+    color: #7B8491;
+    font-family: "Segoe UI";
+    font-size: 12px;
+}
+
+QWidget#reportsContent QLabel#listCardTrailingText {
+    color: #374151;
+    font-family: "Segoe UI";
+    font-size: 13px;
+    font-weight: 700;
+}
+
+QWidget#reportsContent QProgressBar {
+    background-color: #E7ECF2;
+    border: none;
+    border-radius: 4px;
+}
+
+QWidget#reportsContent QProgressBar::chunk {
+    background-color: #2F80ED;
+    border: none;
+    border-radius: 4px;
 }

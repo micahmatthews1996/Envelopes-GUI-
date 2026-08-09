@@ -1,4 +1,5 @@
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import (
     QButtonGroup,
     QHBoxLayout,
@@ -17,17 +18,17 @@ from gui.pages.budgets_page import BudgetsPage
 from gui.pages.categories_page import CategoriesPage
 from gui.pages.dashboard_page import DashboardPage
 from gui.pages.reports_page import ReportsPage
-from gui.pages.settings_page import SettingsPage
+from gui.pages.savings_goals_page import SavingsGoalsPage
 from gui.pages.transactions_page import TransactionsPage
 
 
 PAGE_DASHBOARD = "dashboard"
 PAGE_ACCOUNTS = "accounts"
 PAGE_TRANSACTIONS = "transactions"
+PAGE_SAVINGS_GOALS = "savings_goals"
 PAGE_BUDGETS = "budgets"
 PAGE_REPORTS = "reports"
 PAGE_CATEGORIES = "categories"
-PAGE_SETTINGS = "settings"
 
 
 class MainWindow(QMainWindow):
@@ -42,6 +43,9 @@ class MainWindow(QMainWindow):
         self._container = container
 
         self.setWindowTitle("Envelopes")
+        self.setWindowIcon(
+            QIcon("assets/icons/envelopes.png")
+        )
         self.resize(1100, 700)
         self.setMinimumSize(900, 600)
 
@@ -63,15 +67,77 @@ class MainWindow(QMainWindow):
         """Create and register all application pages."""
 
         self.pages = {
-            PAGE_DASHBOARD: DashboardPage(),
-            PAGE_ACCOUNTS: AccountsPage(
-                self._container.account_service
+            PAGE_DASHBOARD: DashboardPage(
+                dashboard_service=(
+                    self._container.dashboard_service
+                ),
             ),
-            PAGE_TRANSACTIONS: TransactionsPage(),
-            PAGE_BUDGETS: BudgetsPage(),
-            PAGE_REPORTS: ReportsPage(),
-            PAGE_CATEGORIES: CategoriesPage(),
-            PAGE_SETTINGS: SettingsPage(),
+            PAGE_ACCOUNTS: AccountsPage(
+                account_service=(
+                    self._container.account_service
+                ),
+                balance_service=(
+                    self._container.balance_service
+                ),
+            ),
+            PAGE_TRANSACTIONS: TransactionsPage(
+                transaction_service=(
+                    self._container.transaction_service
+                ),
+                account_service=(
+                    self._container.account_service
+                ),
+                category_service=(
+                    self._container.category_service
+                ),
+                savings_goal_service=(
+                    self._container.savings_goal_service
+                ),
+                savings_goal_allocation_service=(
+                    self._container
+                    .savings_goal_allocation_service
+                ),
+            ),
+            PAGE_SAVINGS_GOALS: SavingsGoalsPage(
+                savings_goal_service=(
+                    self._container.savings_goal_service
+                ),
+                savings_goal_allocation_service=(
+                    self._container
+                    .savings_goal_allocation_service
+                ),
+            ),
+            PAGE_BUDGETS: BudgetsPage(
+                budget_service=(
+                    self._container.budget_service
+                ),
+                category_service=(
+                    self._container.category_service
+                ),
+                account_service=(
+                    self._container.account_service
+                ),
+                transaction_service=(
+                    self._container.transaction_service
+                ),
+                savings_goal_service=(
+                    self._container.savings_goal_service
+                ),
+                savings_goal_allocation_service=(
+                    self._container.savings_goal_allocation_service
+                ),
+                budget_rollover_service=(
+                    self._container.budget_rollover_service
+                ),
+            ),
+            PAGE_REPORTS: ReportsPage(
+                reports_service=(
+                    self._container.reports_service
+                ),
+            ),
+            PAGE_CATEGORIES: CategoriesPage(
+                self._container.category_service
+            ),
         }
 
         for page_name, page_widget in self.pages.items():
@@ -146,10 +212,10 @@ class MainWindow(QMainWindow):
             ("Dashboard", PAGE_DASHBOARD),
             ("Accounts", PAGE_ACCOUNTS),
             ("Transactions", PAGE_TRANSACTIONS),
+            ("Savings Goals", PAGE_SAVINGS_GOALS),
             ("Budgets", PAGE_BUDGETS),
             ("Reports", PAGE_REPORTS),
             ("Categories", PAGE_CATEGORIES),
-            ("Settings", PAGE_SETTINGS),
         ]
 
         for button_text, page_name in navigation_items:
@@ -200,7 +266,7 @@ class MainWindow(QMainWindow):
         return button
 
     def _show_page(self, page_name: str) -> None:
-        """Display the selected page."""
+        """Refresh and display the selected page."""
 
         page_index = self.page_indexes.get(
             page_name
@@ -212,6 +278,10 @@ class MainWindow(QMainWindow):
                 3000,
             )
             return
+
+        selected_page = self.pages[page_name]
+
+        self._refresh_page(selected_page)
 
         self.page_stack.setCurrentIndex(
             page_index
@@ -234,6 +304,33 @@ class MainWindow(QMainWindow):
             f"{display_name} page",
             2000,
         )
+
+    def _refresh_page(
+        self,
+        page: QWidget,
+    ) -> None:
+        """Refresh a page when it provides a refresh method."""
+
+        refresh_method_names = [
+            "refresh_dashboard",
+            "refresh_accounts",
+            "refresh_transactions",
+            "refresh_budgets",
+            "refresh_reports",
+            "refresh_categories",
+            "refresh",
+        ]
+
+        for method_name in refresh_method_names:
+            refresh_method = getattr(
+                page,
+                method_name,
+                None,
+            )
+
+            if callable(refresh_method):
+                refresh_method()
+                return
 
     def _create_status_bar(self) -> None:
         """Create the main application status bar."""

@@ -1,0 +1,2 @@
+1. When minimized window the accounts page is not displaying fully.
+2. problem with wording spacing in "add buttons" not in header.(savings goals and budgets)

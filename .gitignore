@@ -1,0 +1,43 @@
+# Python virtual environment
+.venv/
+venv/
+
+# Python cache / compiled files
+__pycache__/
+*.py[cod]
+
+# Pytest cache
+.pytest_cache/
+
+# VS Code local settings
+.vscode/
+
+# PyInstaller output
+build/
+dist/
+*.spec.bak
+
+# Local user data
+data/*.json
+
+# OS junk
+Thumbs.db
+.DS_Store 
+
+# Current local working copy lives at repository root.
+# GitHub version is stored in /Envelopes.
+/assets/
+/core/
+/gui/
+/models/
+/repositories/
+/services/
+/tests/
+/utils/
+/main.py
+/README.md
+/TESTING.md
+/pytest.ini
+/requirements.txt
+/requirements-test.txt
+/testingNotes.txt

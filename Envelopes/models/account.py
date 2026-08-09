@@ -3,12 +3,16 @@ from dataclasses import asdict, dataclass
 from utils.money import dollars_to_cents
 
 
+DEFAULT_ACCOUNT_TYPE = "Checking"
+
+
 @dataclass(slots=True)
 class Account:
     """Represents a financial account."""
 
     account_id: str
     name: str
+    account_type: str
     opening_balance_cents: int
 
     def to_dictionary(self) -> dict[str, str | int]:
@@ -26,6 +30,9 @@ class Account:
 
         Older account records containing `opening_balance`
         are automatically converted to integer cents.
+
+        Older records without an account type default to
+        Checking so they remain compatible.
         """
 
         if "opening_balance_cents" in account_data:
@@ -41,8 +48,25 @@ class Account:
                 "Account data is missing an opening balance."
             )
 
+        account_type = str(
+            account_data.get(
+                "account_type",
+                DEFAULT_ACCOUNT_TYPE,
+            )
+        ).strip()
+
+        if not account_type:
+            account_type = DEFAULT_ACCOUNT_TYPE
+
         return cls(
-            account_id=str(account_data["account_id"]),
-            name=str(account_data["name"]),
-            opening_balance_cents=opening_balance_cents,
+            account_id=str(
+                account_data["account_id"]
+            ),
+            name=str(
+                account_data["name"]
+            ),
+            account_type=account_type,
+            opening_balance_cents=(
+                opening_balance_cents
+            ),
         )

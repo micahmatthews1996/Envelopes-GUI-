@@ -1,6 +1,7 @@
 import sys
 
 from PySide6.QtWidgets import QApplication
+from PySide6.QtGui import QIcon
 
 from core.application_container import ApplicationContainer
 from gui.styles.style_loader import load_stylesheet
@@ -14,6 +15,10 @@ def main() -> None:
     application = QApplication(sys.argv)
     application.setApplicationName("Envelopes")
     application.setOrganizationName("Envelopes")
+
+    application.setWindowIcon(
+    QIcon("assets/icons/envelopes.png")
+)
 
     stylesheet = load_stylesheet(STYLE_FILE)
     application.setStyleSheet(stylesheet)
